@@ -154,8 +154,7 @@ Northwind-ETL-pipeline/
 │
 ├── Validation/
 │   ├── validation.py            # raises on failure — row counts, orphans, reconciliation
-│   ├── validation.sql
-│   └── sanity_aggregation_check.sql
+│   └── validation.sql
 │
 └── data/                        # extracted CSVs (git-ignored — regenerated on each run)
 ```
