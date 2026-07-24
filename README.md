@@ -138,8 +138,9 @@ Northwind-ETL-pipeline/
 ├── Staging/
 │   ├── stage_creation.py        # Snowflake internal stage
 │   ├── staging_empty_tables.py  # staging table DDL (1:1 mirror of source)
-│   ├── copyinto_stagingtables.py# PUT + COPY INTO (TRUNCATE first — idempotent)
-│   └── staging_files.py
+│   ├── staging_files.py
+│   └── copyinto_stagingtables.py# PUT + COPY INTO (TRUNCATE first — idempotent)
+│    
 │
 ├── Transformation/
 │   ├── dim_date_creation.sql    # generated, not sourced (GENERATOR + SEQ4 + DATEADD)
