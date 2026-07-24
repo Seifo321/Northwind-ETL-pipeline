@@ -138,8 +138,8 @@ Northwind-ETL-pipeline/
 ├── Staging/
 │   ├── stage_creation.py        # Snowflake internal stage
 │   ├── staging_empty_tables.py  # staging table DDL (1:1 mirror of source)
-│   ├── staging_files.py
-│   └── copyinto_stagingtables.py# PUT + COPY INTO (TRUNCATE first — idempotent)
+│   ├── staging_files.py         # uploading the csv files to the stage 
+│   └── copyinto_stagingtables.py# copying the csv files data into the empty tables  PUT + COPY INTO (TRUNCATE first — idempotent)
 │    
 │
 ├── Transformation/
