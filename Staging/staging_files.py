@@ -9,8 +9,9 @@ from pathlib import Path
 
 # folder where THIS script file lives
 SCRIPT_DIR = Path(__file__).resolve().parent
-# project root is one level up from Staging/
+# project root is one level up from Extraction/
 DATA_DIR = SCRIPT_DIR.parent / "data"
+
 
 def upload_files_to_stage():
     try:
@@ -29,10 +30,15 @@ def upload_files_to_stage():
 
         tables = ["orders", "order_details", "customers", "employees", "shippers", "suppliers", "products", "categories"]
         for table in tables:
-            file_path = (DATA_DIR / f"{table}.csv").as_posix()
-            cursor.execute(f"PUT file://{file_path} @northwind_stage OVERWRITE = TRUE")
+            csv_path = DATA_DIR / f"{table}.csv"
+
+            if not csv_path.is_file():
+                raise FileNotFoundError(f"Missing extracted file: {csv_path}")
+
+            cursor.execute(f"PUT {csv_path.resolve().as_uri()} @northwind_stage OVERWRITE = TRUE")
     except Exception as e:
-        print("Error while connecting to Snowflake:", e)
+        print("Error uploading files to Snowflake:", e)
+        raise
 
 if __name__ == "__main__" :
     upload_files_to_stage()

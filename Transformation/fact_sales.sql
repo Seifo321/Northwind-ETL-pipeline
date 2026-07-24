@@ -4,4 +4,3 @@ SELECT order_id, customer_id, employee_id, ship_via AS shipper_id,
 FROM stg_order_details od
 INNER JOIN stg_orders o
 USING(order_id);
--- TRUNCATE TABLE fact_sales;

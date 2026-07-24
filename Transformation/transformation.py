@@ -26,6 +26,7 @@ def run_transformation():
             print("Connected successfully! Snowflake version:", result[0])
     except Exception as e:
             print("Error while connecting to Snowflake:", e)
+            raise
 
 
 
@@ -51,6 +52,3 @@ def run_transformation():
 
 if __name__ == "__main__":
     run_transformation()
-
-
-

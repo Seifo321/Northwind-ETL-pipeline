@@ -5,7 +5,6 @@ WHERE NOT EXISTS (
     FROM dim_products d
     WHERE d.product_id = f.product_id
 );
-SELECT order_id,product_id,SUM(unit_price*quantity*(1-discount)) AS total_sales
-FROM stg_order_details
-GROUP BY ALL
-ORDER BY order_id , total_sales DESC;
+SELECT
+    ROUND(COALESCE((SELECT SUM(unit_price * quantity * (1 - discount)) FROM stg_order_details), 0), 2) AS staging_sales_total,
+    ROUND(COALESCE((SELECT SUM(unit_price * quantity * (1 - discount)) FROM fact_sales), 0), 2) AS fact_sales_total;

@@ -29,6 +29,7 @@ def run_extraction() :
         )
     except Exception as e:
         print("Error while connecting to PostgreSQL", e)
+        raise
 
     # map each table to its binary column name (if it has one)
     binary_columns = {
