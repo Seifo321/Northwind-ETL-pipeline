@@ -231,4 +231,4 @@ This project intentionally stayed a **full-refresh** pipeline — every run re-e
 
 ## Author
 
-Built by **Seif Zakaria** — [GitHub](https://github.com/Seifo321) · [LinkedIn](https://linkedin.com/in/seif-zakaria)
+Built by **Seif Zakaria** —  [LinkedIn/seif-zakaria](https://linkedin.com/in/seif-zakaria)
