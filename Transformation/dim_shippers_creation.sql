@@ -1,3 +1,6 @@
-CREATE OR REPLACE TABLE dim_shippers AS
+CREATE OR REPLACE TABLE NORTHWIND_DW.PUBLIC.dim_shippers AS
 SELECT shipper_id, company_name
-FROM stg_shippers;
+FROM NORTHWIND_DW.STAGING_SCH.stg_shippers;
+
+
+DROP TABLE IF EXISTS NORTHWIND_DW.STAGING_SCH.dim_shippers;
