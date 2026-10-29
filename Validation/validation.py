@@ -36,14 +36,25 @@ def run_validation():
         for cur in conn.execute_string(sql_content):
             results.append(cur.fetchall())
 
-    orphan_product_rows, sales_totals = results
-    print(f"Orphan product rows: {orphan_product_rows}")
-    print(f"Sales totals (staging, fact): {sales_totals[0]}")
+    staging_row_count, fact_row_count = results[0][0]
+    orphan_relationships = results[1]
+    sales_totals = results[2][0]
 
-    if orphan_product_rows:
-        raise ValueError("Validation failed: fact_sales contains product IDs missing from dim_products.")
+    print(f"Row counts (staging order_details, fact_sales): {staging_row_count}, {fact_row_count}")
+    print(f"Orphan rows by relationship: {orphan_relationships}")
+    print(f"Sales totals (staging, fact): {sales_totals}")
 
-    staging_sales_total, fact_sales_total = sales_totals[0]
+    if staging_row_count != fact_row_count:
+        raise ValueError(
+            f"Validation failed: stg_order_details has {staging_row_count} rows, "
+            f"but fact_sales has {fact_row_count}."
+        )
+
+    orphaned = [(relationship, count) for relationship, count in orphan_relationships if count]
+    if orphaned:
+        raise ValueError(f"Validation failed: fact_sales has unresolved dimension references: {orphaned}")
+
+    staging_sales_total, fact_sales_total = sales_totals
     if staging_sales_total != fact_sales_total:
         raise ValueError("Validation failed: staging and fact_sales totals do not match.")
 
