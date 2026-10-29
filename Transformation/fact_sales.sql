@@ -6,6 +6,9 @@ INNER JOIN NORTHWIND_DW.STAGING_SCH.stg_orders o
 USING(order_id);
 
 ALTER TABLE fact_sales
+    ADD CONSTRAINT pk_fact_sales PRIMARY KEY (order_id, product_id);
+
+ALTER TABLE fact_sales
     ADD CONSTRAINT fk_fact_sales_customers
     FOREIGN KEY (customer_id) REFERENCES dim_customers (customer_id);
 
