@@ -5,6 +5,17 @@ FROM NORTHWIND_DW.STAGING_SCH.stg_order_details od
 INNER JOIN NORTHWIND_DW.STAGING_SCH.stg_orders o
 USING(order_id);
 
+ALTER TABLE fact_sales MODIFY
+    order_id SET NOT NULL,
+    customer_id SET NOT NULL,
+    employee_id SET NOT NULL,
+    shipper_id SET NOT NULL,
+    product_id SET NOT NULL,
+    order_date SET NOT NULL,
+    unit_price SET NOT NULL,
+    quantity SET NOT NULL,
+    discount SET NOT NULL;
+
 ALTER TABLE fact_sales
     ADD CONSTRAINT pk_fact_sales PRIMARY KEY (order_id, product_id);
 
