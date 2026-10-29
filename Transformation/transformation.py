@@ -35,8 +35,8 @@ def run_transformation():
     SCRIPT_DIR = Path(__file__).resolve().parent
 
 
-    sql_files = ["dim_customers_creation.sql", "dim_products_creation.sql",
-                "dim_employees_creation.sql", "dim_suppliers_creation.sql",
+    sql_files = ["dim_customers_creation.sql", "dim_suppliers_creation.sql",
+                "dim_products_creation.sql", "dim_employees_creation.sql",
                 "dim_shippers_creation.sql", "dim_date_creation.sql", "fact_sales.sql"]
 
 

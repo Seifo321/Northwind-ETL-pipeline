@@ -19,3 +19,6 @@ FROM
         FROM
             TABLE(GENERATOR(ROWCOUNT => 1096))
     );
+
+ALTER TABLE dim_date
+    ADD CONSTRAINT pk_dim_date PRIMARY KEY (full_date);

@@ -9,3 +9,6 @@ SELECT
 FROM
     NORTHWIND_DW.STAGING_SCH.stg_customers;
 
+ALTER TABLE dim_customers
+    ADD CONSTRAINT pk_dim_customers PRIMARY KEY (customer_id);
+

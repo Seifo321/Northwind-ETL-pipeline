@@ -1,6 +1,6 @@
-CREATE OR REPLACE TABLE NORTHWIND_DW.PUBLIC.dim_shippers AS
+CREATE OR REPLACE TABLE dim_shippers AS
 SELECT shipper_id, company_name
 FROM NORTHWIND_DW.STAGING_SCH.stg_shippers;
 
-
-DROP TABLE IF EXISTS NORTHWIND_DW.STAGING_SCH.dim_shippers;
+ALTER TABLE dim_shippers
+    ADD CONSTRAINT pk_dim_shippers PRIMARY KEY (shipper_id);
