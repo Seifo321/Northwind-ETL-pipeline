@@ -5,7 +5,6 @@ LEFT JOIN NORTHWIND_DW.STAGING_SCH.STG_CATEGORIES AS c
 USING(category_id);
 
 ALTER TABLE dim_products MODIFY
-    product_id SET NOT NULL,
     supplier_id SET NOT NULL,
     product_name SET NOT NULL;
 

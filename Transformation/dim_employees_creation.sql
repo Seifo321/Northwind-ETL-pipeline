@@ -3,7 +3,6 @@ SELECT employee_id ,CONCAT(first_name, ' ', last_name) AS employee_name , title,
 FROM NORTHWIND_DW.STAGING_SCH.stg_employees;
 
 ALTER TABLE dim_employees MODIFY
-    employee_id SET NOT NULL,
     employee_name SET NOT NULL;
 
 ALTER TABLE dim_employees

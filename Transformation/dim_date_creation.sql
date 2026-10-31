@@ -21,7 +21,6 @@ FROM
     );
 
 ALTER TABLE dim_date MODIFY
-    full_date SET NOT NULL,
     year SET NOT NULL,
     month SET NOT NULL,
     day SET NOT NULL,
